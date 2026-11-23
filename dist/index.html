@@ -296,24 +296,17 @@
   /* ---------- Visit ---------- */
   .visit-grid {
     display: grid; grid-template-columns: minmax(0, 1fr);
-    gap: clamp(32px, 5vw, 64px);
+    gap: clamp(24px, 4vw, 48px);
   }
-  @media (min-width: 900px) { .visit-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+  .visit-grid h2 { font-size: clamp(2.5rem, 5.6vw, 4.25rem); }
+  @media (min-width: 900px) {
+    .visit-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
+  }
   address {
     font-style: normal; font-family: var(--display); font-weight: 600; text-transform: uppercase;
     font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1.05;
   }
   .visit-grid .map-link { display: inline-block; margin-top: 16px; font-weight: 600; color: var(--blue); }
-  .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-  .contact-list li {
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline;
-    padding: 18px 0; border-top: 1px solid var(--line);
-  }
-  .contact-list li:last-child { border-bottom: 1px solid var(--line); }
-  .contact-list strong { font-weight: 600; }
-  .contact-list span { display: block; color: var(--steel); font-size: 1rem; }
-  .contact-list a { font-weight: 600; color: var(--blue); white-space: nowrap; }
-  .visit-note { margin: 20px 0 0; color: var(--ink-soft); max-width: 56ch; }
 
   /* ---------- Footer ---------- */
   .site-footer { background: var(--panel); }
@@ -329,7 +322,6 @@
     .site-header .wrap { flex-wrap: wrap; gap: 0 24px; padding-top: 14px; }
     .site-nav ul { gap: 20px; }
     .site-nav a { padding: 10px 0 12px; }
-    .contact-list li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   }
 </style>
 </head>
@@ -448,26 +440,11 @@
 
   <section class="section" id="visit" aria-labelledby="visit-title">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="visit-title">Visit the center</h2>
-      </div>
       <div class="visit-grid">
+        <h2 id="visit-title">Visit the center</h2>
         <div>
           <address>2400 Clifton Ave<br>Nashville, TN 37209</address>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=2400+Clifton+Ave+Nashville+TN+37209" target="_blank" rel="noopener">Get directions</a>
-        </div>
-        <div>
-          <ul class="contact-list">
-            <li>
-              <div><strong>Family &amp; Children's Service</strong><span>Counseling, crisis support and family services</span></div>
-              <a href="https://www.fcsnashville.org/contact-us/" target="_blank" rel="noopener">Contact F&amp;CS</a>
-            </li>
-            <li>
-              <div><strong>Retrieving Independence</strong><span>Service dog applications, volunteering and events</span></div>
-              <a href="https://riservicedogs.org/about-us/" target="_blank" rel="noopener">Contact RI</a>
-            </li>
-          </ul>
-          <p class="visit-note">Each organization keeps its own hours and appointments, so please reach out to them before you visit.</p>
+          <a class="map-link" href="https://maps.app.goo.gl/1bcjKZjhrpGM86Cn7" target="_blank" rel="noopener">Get directions</a>
         </div>
       </div>
     </div>
