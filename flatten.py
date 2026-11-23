@@ -27,10 +27,15 @@ google = re.compile(
 assert google.search(html), "Google Fonts links not found"
 html = google.sub(lambda _: font_style, html)
 
-# 2. Photo: inline as a data URI.
-img = base64.b64encode((root / "assets/honey-alexander-center.jpg").read_bytes()).decode()
-assert 'src="assets/honey-alexander-center.jpg"' in html
-html = html.replace('src="assets/honey-alexander-center.jpg"', f'src="data:image/jpeg;base64,{img}"')
+# 2. Images: inline every <img src="assets/..."> (photo and logos) as a data URI.
+img = base64.b64encode((root / "assets/honey-alexander-center.jpg").read_bytes()).decode()  # also served as /og.jpg
+MIME = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml"}
+def inline_src(m):
+    p = root / m.group(1)
+    data = base64.b64encode(p.read_bytes()).decode()
+    return f'src="data:{MIME[p.suffix.lower()]};base64,{data}"'
+html, n_imgs = re.subn(r'src="(assets/[^"]+)"', inline_src, html)
+assert n_imgs >= 1, "no images found to inline"
 
 # 3. og:image needs an absolute URL; the Worker serves the photo at /og.jpg.
 html = html.replace('content="assets/honey-alexander-center.jpg"',

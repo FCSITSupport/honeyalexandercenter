@@ -170,6 +170,9 @@
     font-size: 1rem; line-height: 1.4; color: var(--steel);
   }
   .tenant-chip { --h: 16px; width: min(100%, 220px); }
+  .tenant-logo { display: block; height: auto; margin-top: clamp(8px, 2vw, 24px); }
+  .tenant-logo--tall { width: clamp(132px, 14vw, 180px); }
+  .tenant-logo--wide { width: min(100%, 400px); }
 
   .tenant-body { display: grid; gap: 28px; align-content: start; }
   .tenant-body > p { margin: 0; max-width: 62ch; }
@@ -314,6 +317,8 @@
         <div class="tenant-name">
           <h3 id="fcs-title">Family &amp; Children's Service<small>Nashville nonprofit since 1943</small></h3>
           <div class="stripes tenant-chip" data-stripes data-palette="green" aria-hidden="true"></div>
+          <img class="tenant-logo tenant-logo--tall" src="assets/logos/fcs-logo.png" width="222" height="302" loading="lazy" decoding="async"
+               alt="Family &amp; Children's Service logo: a tree whose branches are people, with the words A Tennessee Nonprofit">
         </div>
         <div class="tenant-body">
           <blockquote>
@@ -343,6 +348,8 @@
         <div class="tenant-name">
           <h3 id="ri-title">Retrieving Independence<small>Service dogs, in the center since 2021</small></h3>
           <div class="stripes tenant-chip" data-stripes data-palette="blue" aria-hidden="true"></div>
+          <img class="tenant-logo tenant-logo--wide" src="assets/logos/ri-logo.png" width="1000" height="300" loading="lazy" decoding="async"
+               alt="Retrieving Independence logo, a yellow service dog in an RI vest, with the Assistance Dogs International Accredited Member seal">
         </div>
         <div class="tenant-body">
           <blockquote>
