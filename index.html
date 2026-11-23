@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honey Alexander Center · Nashville</title>
+<meta name="description" content="The Honey Alexander Center at 2400 Clifton Avenue in Nashville is home to nonprofit organizations serving children, families and communities across Tennessee.">
+<meta property="og:title" content="Honey Alexander Center">
+<meta property="og:description" content="A home for nonprofits serving Nashville and greater Tennessee.">
+<meta property="og:image" content="assets/honey-alexander-center.jpg">
+<meta name="theme-color" content="#1c1b1c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c1b1c'/%3E%3Crect x='6' y='6' width='4' height='20' fill='%23eef0f1'/%3E%3Crect x='11' y='6' width='4' height='20' fill='%232b6cb3'/%3E%3Crect x='16' y='6' width='4' height='20' fill='%23b4c22b'/%3E%3Crect x='21' y='6' width='5' height='20' fill='%233f8a2a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Sampled from the facade, lifted to daylight values */
+    --ink: #1c1b1c;          /* dimensional lettering, mullions */
+    --ink-soft: #3a3839;
+    --steel: #5f646b;        /* aluminum cladding; secondary text */
+    --panel: #eef0f1;        /* white facade panels */
+    --canvas: #f8f8f6;
+    --line: #d9dcdf;
+    --blue: #2b6cb3;         /* deep blue panel (text-safe) */
+    --sky: #6aa6dc;          /* light blue panel */
+    --green: #3f8a2a;        /* grass green panel (text-safe) */
+    --lime: #b4c22b;         /* lime panel */
+    --orange: #dd861d;       /* single orange panel */
+    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --body: "Barlow", system-ui, sans-serif;
+    --gutter: clamp(16px, 4vw, 56px);
+    --max: 1240px;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-color: var(--steel) var(--panel); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font: 400 1.125rem/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--lime); color: var(--ink); }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .skip {
+    position: absolute; left: 16px; top: -100px; z-index: 10;
+    background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 4px;
+  }
+  .skip:focus { top: 16px; }
+
+  /* ---------- Facade stripes: the building's signature ---------- */
+  .stripes {
+    display: flex;
+    height: var(--h, 18px);
+    overflow: hidden;
+    /* Plain panel color until the script builds the bars */
+    background: var(--panel);
+  }
+  /* Gray joints between panels, as on the building */
+  .stripes.built { background: #c3c8cd; gap: 2px; }
+  .stripes span {
+    flex: var(--w, 1) 0 0;
+    background: var(--c);
+    transform-origin: bottom;
+  }
+  .stripes.animate span {
+    animation: rise 900ms var(--ease-out) both;
+    animation-delay: calc(var(--i) * 22ms);
+  }
+  @keyframes rise { from { transform: scaleY(0.25); } to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) { .stripes.animate span { animation: none; } }
+
+  /* ---------- Header ---------- */
+  .site-header { background: var(--canvas); border-bottom: 1px solid var(--line); }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    min-height: 68px;
+  }
+  .brand {
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: 1.375rem; letter-spacing: 0.01em; text-decoration: none; line-height: 1;
+  }
+  .site-nav ul { display: flex; gap: clamp(16px, 3vw, 36px); list-style: none; margin: 0; padding: 0; }
+  .site-nav a {
+    font-weight: 500; font-size: 1rem; text-decoration: none; color: var(--ink-soft);
+    padding: 12px 0; display: inline-block;
+  }
+  .site-nav a:hover { color: var(--blue); text-decoration: underline; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: clamp(40px, 7vw, 96px); }
+  .hero h1 {
+    font-size: clamp(2.75rem, 7.6vw, 6rem);
+    max-width: 16ch;
+  }
+  .hero-lede {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: clamp(24px, 3vw, 36px);
+    padding-bottom: clamp(32px, 5vw, 56px);
+  }
+  .hero-lede p { margin: 0; max-width: 36rem; font-size: clamp(1.125rem, 1.6vw, 1.3125rem); color: var(--ink-soft); }
+  .hero-lede .where {
+    font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+    font-size: 1.0625rem; color: var(--steel); align-self: end;
+  }
+  @media (min-width: 900px) {
+    .hero-lede { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+    .hero-lede .where { text-align: right; }
+  }
+  .hero-photo { position: relative; }
+  .hero-photo img {
+    width: 100%;
+    height: clamp(260px, 34vw, 520px);
+    object-fit: cover;
+    object-position: 62% 40%;
+  }
+
+  /* ---------- Sections ---------- */
+  section { scroll-margin-top: 24px; }
+  .section { padding-block: clamp(64px, 9vw, 128px); }
+  .section-head { display: grid; gap: 16px; margin-bottom: clamp(40px, 6vw, 72px); }
+  .section-head h2 { font-size: clamp(2.5rem, 5.6vw, 4.25rem); }
+  .section-head p { margin: 0; max-width: 40rem; color: var(--ink-soft); }
+
+  /* ---------- Tenants ---------- */
+  .tenant {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    padding-block: clamp(40px, 5vw, 64px);
+    border-top: 2px solid var(--ink);
+  }
+  .tenant:last-child { border-bottom: 2px solid var(--ink); }
+  @media (min-width: 900px) {
+    .tenant { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  }
+  .tenant-name { display: grid; gap: 20px; align-content: start; }
+  .tenant-name h3 { font-size: clamp(2.25rem, 4.4vw, 3.5rem); }
+  .tenant-name h3 small {
+    display: block; margin-top: 10px;
+    font-family: var(--body); font-weight: 500; text-transform: none; letter-spacing: 0;
+    font-size: 1rem; line-height: 1.4; color: var(--steel);
+  }
+  .tenant-chip { --h: 16px; width: min(100%, 220px); }
+
+  .tenant-body { display: grid; gap: 28px; align-content: start; }
+  .tenant-body > p { margin: 0; max-width: 62ch; }
+  .tenant blockquote {
+    margin: 0; padding: 0;
+    font-family: var(--display); font-weight: 600; text-transform: none;
+    font-size: clamp(1.5rem, 2.4vw, 1.875rem); line-height: 1.3; letter-spacing: -0.005em;
+    max-width: 30ch; text-wrap: balance;
+  }
+  .tenant blockquote footer {
+    margin-top: 10px; font-family: var(--body); font-weight: 500; font-size: 0.9375rem; line-height: 1.4;
+    letter-spacing: 0; color: var(--steel);
+  }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 20px 32px; margin: 0;
+  }
+  .facts div { border-top: 1px solid var(--line); padding-top: 12px; }
+  .facts dt {
+    font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 0.9375rem; color: var(--steel);
+  }
+  .facts dd { margin: 4px 0 0; font-size: 1.0625rem; line-height: 1.45; }
+
+  .areas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .areas li {
+    font-size: 0.9375rem; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+    background: var(--tint); color: var(--ink);
+  }
+  .tenant[data-tenant="fcs"] { --accent: #33741f; --tint: #e3efd9; }
+  .tenant[data-tenant="ri"] { --accent: var(--blue); --tint: #dde9f5; }
+
+  .visit-link {
+    display: inline-flex; align-items: center; gap: 10px; justify-self: start;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 1.0625rem;
+    padding: 14px 22px; border-radius: 4px;
+    transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .visit-link:hover { background: var(--accent); text-decoration: none; }
+  .visit-link:active { transform: scale(0.98); }
+  .visit-link svg { width: 18px; height: 18px; transition: transform 200ms var(--ease-out); }
+  .visit-link:hover svg { transform: translate(2px, -2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .visit-link, .visit-link svg { transition: none; }
+  }
+
+  /* ---------- Honey Alexander ---------- */
+  .namesake { background: var(--ink); color: #f2f2ef; }
+  .namesake ::selection { background: var(--lime); color: var(--ink); }
+  .namesake .wrap {
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 80px);
+  }
+  @media (min-width: 900px) {
+    .namesake .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+  }
+  .namesake h2 { font-size: clamp(2.5rem, 5.6vw, 4.25rem); color: #fff; }
+  .namesake h2 span { display: block; color: var(--lime); }
+  .namesake .dedicated {
+    margin-top: 24px; font-family: var(--display); font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; font-size: 1rem; color: #b9bcc0;
+  }
+  .namesake-text p { margin: 0 0 1.1em; max-width: 60ch; font-size: clamp(1.125rem, 1.5vw, 1.25rem); color: #dcdcd8; }
+  .namesake-text p:first-child { color: #fff; font-size: clamp(1.25rem, 1.9vw, 1.5rem); line-height: 1.45; }
+  .namesake-text p:last-child { margin-bottom: 0; }
+
+  /* ---------- Visit ---------- */
+  .visit-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 64px);
+  }
+  @media (min-width: 900px) { .visit-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+  address {
+    font-style: normal; font-family: var(--display); font-weight: 600; text-transform: uppercase;
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1.05;
+  }
+  .visit-grid .map-link { display: inline-block; margin-top: 16px; font-weight: 600; color: var(--blue); }
+  .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .contact-list li {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline;
+    padding: 18px 0; border-top: 1px solid var(--line);
+  }
+  .contact-list li:last-child { border-bottom: 1px solid var(--line); }
+  .contact-list strong { font-weight: 600; }
+  .contact-list span { display: block; color: var(--steel); font-size: 1rem; }
+  .contact-list a { font-weight: 600; color: var(--blue); white-space: nowrap; }
+  .visit-note { margin: 20px 0 0; color: var(--ink-soft); max-width: 56ch; }
+
+  /* ---------- Footer ---------- */
+  .site-footer { background: var(--panel); }
+  .site-footer .wrap {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 40px;
+    padding-block: 32px 40px; font-size: 1rem; color: var(--ink-soft);
+  }
+  .site-footer p { margin: 0; }
+  .crisis strong { color: var(--ink); }
+  .crisis a { font-weight: 600; color: var(--blue); }
+
+  @media (max-width: 560px) {
+    .site-header .wrap { flex-wrap: wrap; gap: 0 24px; padding-top: 14px; }
+    .site-nav ul { gap: 20px; }
+    .site-nav a { padding: 10px 0 12px; }
+    .contact-list li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="stripes animate" data-stripes style="--h: 28px" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Honey Alexander Center</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#tenants">Our nonprofits</a></li>
+        <li><a href="#namesake">About Honey</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <h1 id="hero-title">A home for the nonprofits that serve Nashville</h1>
+      <div class="hero-lede">
+        <p>The Honey Alexander Center houses only nonprofit organizations, each working to support children, families and communities across Nashville and greater Tennessee.</p>
+        <p class="where">2400 Clifton Ave · Nashville, TN</p>
+      </div>
+    </div>
+    <figure class="hero-photo" style="margin:0">
+      <img src="assets/honey-alexander-center.jpg" width="1400" height="475"
+           alt="The Honey Alexander Center: a long glass building with a band of blue, green, lime, orange and white vertical panels and black dimensional letters spelling the building's name.">
+    </figure>
+  </section>
+
+  <section class="section" id="tenants" aria-labelledby="tenants-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="tenants-title">Who's in the building</h2>
+        <p>Two organizations call the center home today. Reach each one directly for services, volunteering and giving.</p>
+      </div>
+
+      <article class="tenant" data-tenant="fcs" aria-labelledby="fcs-title">
+        <div class="tenant-name">
+          <h3 id="fcs-title">Family &amp; Children's Service<small>Nashville nonprofit since 1943</small></h3>
+          <div class="stripes tenant-chip" data-stripes data-palette="green" aria-hidden="true"></div>
+        </div>
+        <div class="tenant-body">
+          <blockquote>
+            “Our mission is to connect individuals and families to hope, to healing, and to one another.”
+            <footer>Family &amp; Children's Service</footer>
+          </blockquote>
+          <p>F&amp;CS serves people in crisis and transition by meeting them where they are, understanding their needs and connecting them to the resources they need. It often fills the gaps in social services, a safety net so that all children and families can be safe and healthy.</p>
+          <dl class="facts">
+            <div><dt>Founded</dt><dd>1943, by volunteers finding homes for children orphaned in WWII</dd></div>
+            <div><dt>Reach</dt><dd>More than 90,000 Tennesseans served each year</dd></div>
+          </dl>
+          <ul class="areas" aria-label="F&amp;CS impact areas">
+            <li>Mental health &amp; counseling</li>
+            <li>Child &amp; family permanency</li>
+            <li>Economic stability</li>
+            <li>Support for public education</li>
+          </ul>
+          <a class="visit-link" href="https://www.fcsnashville.org" target="_blank" rel="noopener">
+            Visit fcsnashville.org
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+            <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">(opens in a new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tenant" data-tenant="ri" aria-labelledby="ri-title">
+        <div class="tenant-name">
+          <h3 id="ri-title">Retrieving Independence<small>Service dogs, in the center since 2021</small></h3>
+          <div class="stripes tenant-chip" data-stripes data-palette="blue" aria-hidden="true"></div>
+        </div>
+        <div class="tenant-body">
+          <blockquote>
+            “To increase independence and restore dignity through the training and placement of working dogs.”
+            <footer>Retrieving Independence mission</footer>
+          </blockquote>
+          <p>Founded in Franklin in 2012 by Dr. Brenda Dew and Lesley Adams, Retrieving Independence trains and places service dogs, facility dogs for schools and professional settings, and skilled companions for in-home support. Much of the training happens through Serving with Canines, its prison-based program where incarcerated trainers prepare dogs for placement.</p>
+          <dl class="facts">
+            <div><dt>Graduates</dt><dd>More than 100 working dogs placed since 2012</dd></div>
+            <div><dt>Training</dt><dd>Three prison-based programs and 80+ active volunteers</dd></div>
+          </dl>
+          <ul class="areas" aria-label="Retrieving Independence programs">
+            <li>Service dogs</li>
+            <li>Facility dogs</li>
+            <li>Skilled companions</li>
+            <li>Serving with Canines</li>
+          </ul>
+          <a class="visit-link" href="https://riservicedogs.org/about-us/" target="_blank" rel="noopener">
+            Visit riservicedogs.org
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+            <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">(opens in a new tab)</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="namesake section" id="namesake" aria-labelledby="namesake-title">
+    <div class="wrap">
+      <div>
+        <h2 id="namesake-title">Named for <span>Honey Alexander</span></h2>
+        <p class="dedicated">Dedicated June 2019</p>
+      </div>
+      <div class="namesake-text">
+        <p>The Honey Alexander Center is named in honor of F&amp;CS benefactor and former Tennessee First Lady Honey Alexander.</p>
+        <p>Honey was a powerful advocate for children and families during and after her time as First Lady. She was a longtime volunteer, board member and chair, and generous supporter of Family &amp; Children's Service. The center was officially dedicated in her honor in June 2019.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="visit-title">Visit the center</h2>
+      </div>
+      <div class="visit-grid">
+        <div>
+          <address>2400 Clifton Ave<br>Nashville, TN 37209</address>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=2400+Clifton+Ave+Nashville+TN+37209" target="_blank" rel="noopener">Get directions</a>
+        </div>
+        <div>
+          <ul class="contact-list">
+            <li>
+              <div><strong>Family &amp; Children's Service</strong><span>Counseling, crisis support and family services</span></div>
+              <a href="https://www.fcsnashville.org/contact-us/" target="_blank" rel="noopener">Contact F&amp;CS</a>
+            </li>
+            <li>
+              <div><strong>Retrieving Independence</strong><span>Service dog applications, volunteering and events</span></div>
+              <a href="https://riservicedogs.org/about-us/" target="_blank" rel="noopener">Contact RI</a>
+            </li>
+          </ul>
+          <p class="visit-note">Each organization keeps its own hours and appointments, so please reach out to them before you visit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="stripes" data-stripes data-reverse style="--h: 22px" aria-hidden="true"></div>
+  <div class="site-footer">
+    <div class="wrap">
+      <p>© <span data-year>2026</span> Honey Alexander Center · 2400 Clifton Ave, Nashville, TN 37209</p>
+      <p class="crisis"><strong>In crisis?</strong> Call or text <a href="tel:988">988</a>, any time.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Builds the facade's band of vertical panels. Sequence follows the building, left to right.
+  (function () {
+    var C = { w: '#ffffff', s: '#6aa6dc', b: '#2b6cb3', l: '#b4c22b', g: '#3f8a2a', o: '#dd861d', y: '#cfd44a' };
+    var facade = 'w2 s1 w2 b1 w1 l1 w2 b2 g1 w1 o1 b1 y1 w2 s1 g1 w1 b1 l2 w1 s1 w2 b1 g2 w1 l1 b1 w2 s1 o1 w1 g1 b2 w1 y1 s1 w2 l1 b1';
+    var palettes = {
+      facade: facade,
+      blue: 'b3 w1 s2 w1 b1 s1 w2 b2',
+      green: 'g3 w1 l2 w1 g1 y1 w2 g2'
+    };
+    document.querySelectorAll('[data-stripes]').forEach(function (el) {
+      var seq = (palettes[el.dataset.palette] || facade).split(' ');
+      if (el.hasAttribute('data-reverse')) seq.reverse();
+      var frag = document.createDocumentFragment();
+      seq.forEach(function (tok, i) {
+        var s = document.createElement('span');
+        s.style.setProperty('--c', C[tok[0]]);
+        s.style.setProperty('--w', tok.slice(1));
+        s.style.setProperty('--i', i);
+        frag.appendChild(s);
+      });
+      el.appendChild(frag);
+      el.classList.add('built');
+    });
+    var y = document.querySelector('[data-year]');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
