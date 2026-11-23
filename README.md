@@ -1,6 +1,6 @@
 # Honey Alexander Center
 
-Single-page website for the Honey Alexander Center, 2400 Clifton Ave, Nashville, TN: home to Family & Children's Service and Retrieving Independence.
+Single-page website for the Honey Alexander Center, 2400 Clifton Ave, Nashville, TN: home to Family & Children's Service, Retrieving Independence and Tennessee Youth Courts.
 
 Live at https://honeyalexandercenter.org
 
@@ -16,7 +16,7 @@ The Worker code is only stored here for reference; Cloudflare does not redeploy 
 ## Files
 
 - `index.html`: the site.
-- `assets/`: the building photo.
+- `assets/`: the building photo and the three tenant logos.
 - `cloudflare/worker.js`: the deployed Worker.
 - `dist/`: an alternative self-contained build. `dist/index.html` has the photo and fonts embedded, and `dist/worker.js` serves it on its own without GitHub. Rebuild it after editing `index.html` (needs internet to fetch the fonts):
 

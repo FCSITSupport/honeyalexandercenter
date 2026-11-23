@@ -173,6 +173,7 @@
   .tenant-logo { display: block; height: auto; margin-top: clamp(8px, 2vw, 24px); }
   .tenant-logo--tall { width: clamp(132px, 14vw, 180px); }
   .tenant-logo--wide { width: min(100%, 400px); }
+  .tenant-logo--mid { width: min(100%, 300px); }
 
   .tenant-body { display: grid; gap: 28px; align-content: start; }
   .tenant-body > p { margin: 0; max-width: 62ch; }
@@ -205,6 +206,7 @@
   }
   .tenant[data-tenant="fcs"] { --accent: #33741f; --tint: #e3efd9; }
   .tenant[data-tenant="ri"] { --accent: var(--blue); --tint: #dde9f5; }
+  .tenant[data-tenant="tyc"] { --accent: #9a4f0e; --tint: #f8e9d8; }
 
   .visit-link {
     display: inline-flex; align-items: center; gap: 10px; justify-self: start;
@@ -310,7 +312,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="tenants-title">Who's in the building</h2>
-        <p>Two organizations call the center home today. Reach each one directly for services, volunteering and giving.</p>
+        <p>Three organizations call the center home today. Reach each one directly for services, volunteering and giving.</p>
       </div>
 
       <article class="tenant" data-tenant="fcs" aria-labelledby="fcs-title">
@@ -374,6 +376,36 @@
           </a>
         </div>
       </article>
+      <article class="tenant" data-tenant="tyc" aria-labelledby="tyc-title">
+        <div class="tenant-name">
+          <h3 id="tyc-title">Tennessee Youth Courts<small>Youth courts across Tennessee</small></h3>
+          <div class="stripes tenant-chip" data-stripes data-palette="orange" aria-hidden="true"></div>
+          <img class="tenant-logo tenant-logo--wide tenant-logo--mid" src="assets/logos/tyc-logo.png" width="450" height="206" loading="lazy" decoding="async"
+               alt="Tennessee Youth Courts logo: a figure with raised arms forming a tree trunk, with green leaves and orange fruit">
+        </div>
+        <div class="tenant-body">
+          <blockquote>
+            “We plant, nurture, and grow opportunities for teens to change their lives and the lives of others.”
+            <footer>Tennessee Youth Courts mission</footer>
+          </blockquote>
+          <p>Tennessee Youth Courts supports youth court programs in schools and juvenile courts statewide. Teen volunteers hear cases of rule-breaking by their peers and decide the consequences, guided by restorative justice. The organization funds and trains adult and youth volunteers, runs educational events and offers technical assistance to programs across the state.</p>
+          <dl class="facts">
+            <div><dt>Reach</dt><dd>More than 2,000 students served each year</dd></div>
+            <div><dt>Recognition</dt><dd>Named one of five promising programs in Tennessee by Vanderbilt's Center for Safe and Supportive Schools</dd></div>
+          </dl>
+          <ul class="areas" aria-label="Tennessee Youth Courts programs">
+            <li>Youth court programs</li>
+            <li>Volunteer training</li>
+            <li>Restorative justice</li>
+            <li>Educational events</li>
+          </ul>
+          <a class="visit-link" href="https://tnyouthcourts.org/" target="_blank" rel="noopener">
+            Visit tnyouthcourts.org
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+            <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">(opens in a new tab)</span>
+          </a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -421,7 +453,8 @@
     var palettes = {
       facade: facade,
       blue: 'b3 w1 s2 w1 b1 s1 w2 b2',
-      green: 'g3 w1 l2 w1 g1 y1 w2 g2'
+      green: 'g3 w1 l2 w1 g1 y1 w2 g2',
+      orange: 'o3 w1 y2 w1 o1 l1 w2 o2'
     };
     document.querySelectorAll('[data-stripes]').forEach(function (el) {
       var seq = (palettes[el.dataset.palette] || facade).split(' ');
